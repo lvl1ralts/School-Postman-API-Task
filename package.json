@@ -1,0 +1,19 @@
+{
+  "name": "school-management-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "keywords": ["school", "management", "api", "express", "mysql"],
+  "author": "",
+  "license": "ISC",
+  "description": "Node.js APIs for School Management using Express.js and MySQL",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mysql2": "^3.22.3"
+  }
+}
