@@ -1,153 +1,316 @@
 {
-	"info": {
-		"_postman_id": "school-mgmt-api-collection",
-		"name": "School Management API",
-		"description": "API collection for managing school data. Includes endpoints to add schools and list schools sorted by proximity.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Health Check",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base_url}}/",
-					"host": ["{{base_url}}"],
-					"path": [""]
-				}
-			},
-			"response": [
-				{
-					"name": "Success",
-					"status": "OK",
-					"code": 200,
-					"body": "{\n  \"success\": true,\n  \"message\": \"School Management API is running.\",\n  \"endpoints\": {\n    \"addSchool\": \"POST /addSchool\",\n    \"listSchools\": \"GET /listSchools?latitude=<lat>&longitude=<lon>\"\n  }\n}"
-				}
-			]
-		},
-		{
-			"name": "Add School - Podar International",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"name\": \"Podar International School\",\n  \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n  \"latitude\": 23.1081,\n  \"longitude\": 72.5971\n}"
-				},
-				"url": {
-					"raw": "{{base_url}}/addSchool",
-					"host": ["{{base_url}}"],
-					"path": ["addSchool"]
-				}
-			},
-			"response": [
-				{
-					"name": "Success - School Added",
-					"status": "Created",
-					"code": 201,
-					"body": "{\n  \"success\": true,\n  \"message\": \"School added successfully.\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Podar International School\",\n    \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n    \"latitude\": 23.1081,\n    \"longitude\": 72.5971\n  }\n}"
-				},
-				{
-					"name": "Validation Error",
-					"status": "Bad Request",
-					"code": 400,
-					"body": "{\n  \"success\": false,\n  \"message\": \"Validation failed.\",\n  \"errors\": [\n    \"name is required and must be a non-empty string.\",\n    \"latitude must be between -90 and 90.\"\n  ]\n}"
-				}
-			]
-		},
-		{
-			"name": "Add School - Puna International",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"name\": \"Puna International School\",\n  \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n  \"latitude\": 23.1015,\n  \"longitude\": 72.5893\n}"
-				},
-				"url": {
-					"raw": "{{base_url}}/addSchool",
-					"host": ["{{base_url}}"],
-					"path": ["addSchool"]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "List Schools (from Chandkheda)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base_url}}/listSchools?latitude=23.1047&longitude=72.5920",
-					"host": ["{{base_url}}"],
-					"path": ["listSchools"],
-					"query": [
-						{
-							"key": "latitude",
-							"value": "23.1047"
-						},
-						{
-							"key": "longitude",
-							"value": "72.5920"
-						}
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Success - Schools Listed by Proximity",
-					"status": "OK",
-					"code": 200,
-					"body": "{\n  \"success\": true,\n  \"message\": \"Found 2 school(s).\",\n  \"data\": [\n    {\n      \"id\": 2,\n      \"name\": \"Puna International School\",\n      \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n      \"latitude\": 23.1015,\n      \"longitude\": 72.5893,\n      \"distance_km\": 0.46\n    },\n    {\n      \"id\": 1,\n      \"name\": \"Podar International School\",\n      \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n      \"latitude\": 23.1081,\n      \"longitude\": 72.5971,\n      \"distance_km\": 0.62\n    }\n  ]\n}"
-				},
-				{
-					"name": "Validation Error - Missing Params",
-					"status": "Bad Request",
-					"code": 400,
-					"body": "{\n  \"success\": false,\n  \"message\": \"Valid latitude and longitude query parameters are required.\"\n}"
-				}
-			]
-		},
-		{
-			"name": "List Schools (from Ahmedabad City)",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base_url}}/listSchools?latitude=23.0225&longitude=72.5714",
-					"host": ["{{base_url}}"],
-					"path": ["listSchools"],
-					"query": [
-						{
-							"key": "latitude",
-							"value": "23.0225"
-						},
-						{
-							"key": "longitude",
-							"value": "72.5714"
-						}
-					]
-				}
-			},
-			"response": []
-		}
-	],
-	"variable": [
-		{
-			"key": "base_url",
-			"value": "http://localhost:3000",
-			"type": "string"
-		}
-	]
+  "info": {
+    "_postman_id": "3d34fef7-2497-4aab-b8a3-a1e086885863",
+    "name": "School Management API",
+    "description": "API collection for managing school data. Includes endpoints to add schools and list schools sorted by proximity.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54601615",
+    "_collection_link": "https://go.postman.co/collection/54601615-3d34fef7-2497-4aab-b8a3-a1e086885863?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "header": [],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"message\": \"School Management API is running.\",\n  \"endpoints\": {\n    \"addSchool\": \"POST /addSchool\",\n    \"listSchools\": \"GET /listSchools?latitude=<lat>&longitude=<lon>\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Add School - Podar International",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Podar International School\",\n  \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n  \"latitude\": 23.1081,\n  \"longitude\": 72.5971\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/addSchool",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "addSchool"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success - School Added",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Podar International School\",\n  \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n  \"latitude\": 23.1081,\n  \"longitude\": 72.5971\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/addSchool",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "addSchool"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "Text",
+          "header": [],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"message\": \"School added successfully.\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Podar International School\",\n    \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n    \"latitude\": 23.1081,\n    \"longitude\": 72.5971\n  }\n}"
+        },
+        {
+          "name": "Validation Error",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Podar International School\",\n  \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n  \"latitude\": 23.1081,\n  \"longitude\": 72.5971\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/addSchool",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "addSchool"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "Text",
+          "header": [],
+          "cookie": [],
+          "body": "{\n  \"success\": false,\n  \"message\": \"Validation failed.\",\n  \"errors\": [\n    \"name is required and must be a non-empty string.\",\n    \"latitude must be between -90 and 90.\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Add School - Puna International",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Puna International School\",\n  \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n  \"latitude\": 23.1015,\n  \"longitude\": 72.5893\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/addSchool",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "addSchool"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Schools (from Chandkheda)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/listSchools?latitude=23.1047&longitude=72.5920",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "listSchools"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "23.1047"
+            },
+            {
+              "key": "longitude",
+              "value": "72.5920"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Success - Schools Listed by Proximity",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/listSchools?latitude=23.1047&longitude=72.5920",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "listSchools"
+              ],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "23.1047"
+                },
+                {
+                  "key": "longitude",
+                  "value": "72.5920"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "header": [],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Found 2 school(s).\",\n  \"data\": [\n    {\n      \"id\": 2,\n      \"name\": \"Puna International School\",\n      \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n      \"latitude\": 23.1015,\n      \"longitude\": 72.5893,\n      \"distance_km\": 0.46\n    },\n    {\n      \"id\": 1,\n      \"name\": \"Podar International School\",\n      \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n      \"latitude\": 23.1081,\n      \"longitude\": 72.5971,\n      \"distance_km\": 0.62\n    }\n  ]\n}"
+        },
+        {
+          "name": "Validation Error - Missing Params",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/listSchools?latitude=23.1047&longitude=72.5920",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "listSchools"
+              ],
+              "query": [
+                {
+                  "key": "latitude",
+                  "value": "23.1047"
+                },
+                {
+                  "key": "longitude",
+                  "value": "72.5920"
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "Text",
+          "header": [],
+          "cookie": [],
+          "body": "{\n  \"success\": false,\n  \"message\": \"Valid latitude and longitude query parameters are required.\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "List Schools (from Ahmedabad City)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/listSchools?latitude=23.0225&longitude=72.5714",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "listSchools"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "23.0225"
+            },
+            {
+              "key": "longitude",
+              "value": "72.5714"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000"
+    }
+  ]
 }
