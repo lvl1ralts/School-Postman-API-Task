@@ -27,7 +27,7 @@
 			]
 		},
 		{
-			"name": "Add School",
+			"name": "Add School - Podar International",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -38,7 +38,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"Delhi Public School\",\n  \"address\": \"Sector 24, Mathura Road, New Delhi\",\n  \"latitude\": 28.5672,\n  \"longitude\": 77.3211\n}"
+					"raw": "{\n  \"name\": \"Podar International School\",\n  \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n  \"latitude\": 23.1081,\n  \"longitude\": 72.5971\n}"
 				},
 				"url": {
 					"raw": "{{base_url}}/addSchool",
@@ -51,7 +51,7 @@
 					"name": "Success - School Added",
 					"status": "Created",
 					"code": 201,
-					"body": "{\n  \"success\": true,\n  \"message\": \"School added successfully.\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Delhi Public School\",\n    \"address\": \"Sector 24, Mathura Road, New Delhi\",\n    \"latitude\": 28.5672,\n    \"longitude\": 77.3211\n  }\n}"
+					"body": "{\n  \"success\": true,\n  \"message\": \"School added successfully.\",\n  \"data\": {\n    \"id\": 1,\n    \"name\": \"Podar International School\",\n    \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n    \"latitude\": 23.1081,\n    \"longitude\": 72.5971\n  }\n}"
 				},
 				{
 					"name": "Validation Error",
@@ -62,7 +62,7 @@
 			]
 		},
 		{
-			"name": "Add School - St. Xavier's",
+			"name": "Add School - Puna International",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -73,7 +73,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"St. Xavier's High School\",\n  \"address\": \"30, Park Street, Kolkata\",\n  \"latitude\": 22.5526,\n  \"longitude\": 88.3520\n}"
+					"raw": "{\n  \"name\": \"Puna International School\",\n  \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n  \"latitude\": 23.1015,\n  \"longitude\": 72.5893\n}"
 				},
 				"url": {
 					"raw": "{{base_url}}/addSchool",
@@ -84,44 +84,22 @@
 			"response": []
 		},
 		{
-			"name": "Add School - Ryan International",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"name\": \"Ryan International School\",\n  \"address\": \"Sector 40, Gurugram, Haryana\",\n  \"latitude\": 28.4595,\n  \"longitude\": 77.0266\n}"
-				},
-				"url": {
-					"raw": "{{base_url}}/addSchool",
-					"host": ["{{base_url}}"],
-					"path": ["addSchool"]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "List Schools (from New Delhi)",
+			"name": "List Schools (from Chandkheda)",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/listSchools?latitude=28.6139&longitude=77.2090",
+					"raw": "{{base_url}}/listSchools?latitude=23.1047&longitude=72.5920",
 					"host": ["{{base_url}}"],
 					"path": ["listSchools"],
 					"query": [
 						{
 							"key": "latitude",
-							"value": "28.6139"
+							"value": "23.1047"
 						},
 						{
 							"key": "longitude",
-							"value": "77.2090"
+							"value": "72.5920"
 						}
 					]
 				}
@@ -131,7 +109,7 @@
 					"name": "Success - Schools Listed by Proximity",
 					"status": "OK",
 					"code": 200,
-					"body": "{\n  \"success\": true,\n  \"message\": \"Found 3 school(s).\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"Delhi Public School\",\n      \"address\": \"Sector 24, Mathura Road, New Delhi\",\n      \"latitude\": 28.5672,\n      \"longitude\": 77.3211,\n      \"distance_km\": 12.45\n    },\n    {\n      \"id\": 3,\n      \"name\": \"Ryan International School\",\n      \"address\": \"Sector 40, Gurugram, Haryana\",\n      \"latitude\": 28.4595,\n      \"longitude\": 77.0266,\n      \"distance_km\": 24.31\n    },\n    {\n      \"id\": 2,\n      \"name\": \"St. Xavier's High School\",\n      \"address\": \"30, Park Street, Kolkata\",\n      \"latitude\": 22.5526,\n      \"longitude\": 88.352,\n      \"distance_km\": 1305.67\n    }\n  ]\n}"
+					"body": "{\n  \"success\": true,\n  \"message\": \"Found 2 school(s).\",\n  \"data\": [\n    {\n      \"id\": 2,\n      \"name\": \"Puna International School\",\n      \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n      \"latitude\": 23.1015,\n      \"longitude\": 72.5893,\n      \"distance_km\": 0.46\n    },\n    {\n      \"id\": 1,\n      \"name\": \"Podar International School\",\n      \"address\": \"Chandkheda, Ahmedabad, Gujarat\",\n      \"latitude\": 23.1081,\n      \"longitude\": 72.5971,\n      \"distance_km\": 0.62\n    }\n  ]\n}"
 				},
 				{
 					"name": "Validation Error - Missing Params",
@@ -142,22 +120,22 @@
 			]
 		},
 		{
-			"name": "List Schools (from Mumbai)",
+			"name": "List Schools (from Ahmedabad City)",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/listSchools?latitude=19.0760&longitude=72.8777",
+					"raw": "{{base_url}}/listSchools?latitude=23.0225&longitude=72.5714",
 					"host": ["{{base_url}}"],
 					"path": ["listSchools"],
 					"query": [
 						{
 							"key": "latitude",
-							"value": "19.0760"
+							"value": "23.0225"
 						},
 						{
 							"key": "longitude",
-							"value": "72.8777"
+							"value": "72.5714"
 						}
 					]
 				}
